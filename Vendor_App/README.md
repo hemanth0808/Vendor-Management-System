@@ -1,1 +1,1 @@
-this is a readme file of vendor management system
+# App named Vendor_App 
