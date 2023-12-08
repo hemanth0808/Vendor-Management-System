@@ -19,15 +19,22 @@ This repository contains a Django project with a RESTful API using Django REST F
 - pip install djangorestframework
 
 ## Set up a new project with a single application
-- django-admin startproject Vendor                  //creates a Vendor project
+- django-admin startproject Vendor                 
 - cd Vendor
-- django-admin startapp Vendor_App                  //creates a Vendor_App named app in Vendor project
+- django-admin startapp Vendor_App              
 
-## Database migration and user creation
-- cd Vendor                         //getting into Vendor project
-- python manage.py makemigrations       //making migrations
-- python manage.py migrate              //migrating the migrations to database
-- python manage.py createsuperuser      //creating super user
+## Database migration
+- cd Vendor                         
+- python manage.py makemigrations      
+- python manage.py migrate
+
+## Superuser creation and Token generation
+- python manage.py createsuperuser
+- curl -X POST -d "username=your_superuser_username&password=your_superuser_password" http://localhost:8000/api-token-auth/
 
 ## Running the server
-- python manage.py runserver           //running the server
+- python manage.py runserver
+
+## Access Django Admin:
+Open the Django admin at http://127.0.0.1:8000/admin/ and log in using the superuser credentials.
+ 
