@@ -8,7 +8,7 @@ This repository contains a Django project with a RESTful API using Django REST F
 - Django
 - Django REST Framework
 
-## Setup Instructions
+# Setup Instructions
 
 ## Create a Virtual Environment:
 - pip install virtualenvwrapper-win
@@ -23,8 +23,7 @@ This repository contains a Django project with a RESTful API using Django REST F
 - cd Vendor
 - django-admin startapp Vendor_App              
 
-## Database migration
-- cd Vendor                         
+## Database migration                    
 - python manage.py makemigrations      
 - python manage.py migrate
 
@@ -36,7 +35,7 @@ This repository contains a Django project with a RESTful API using Django REST F
 - python manage.py runserver
 
 ## Access Django Admin:
-Open the Django admin at http://127.0.0.1:8000/admin/ and log in using the superuser credentials.
+Open the Django admin at http://127.0.0.1:8000/admin/ and log in using the superuser credentials. this is to access the database as a admin user.
 
 ## how to run a api endpoint:
 - first we need to make sure that we migrated the models to database
