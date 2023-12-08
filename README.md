@@ -38,6 +38,11 @@ This repository contains a Django project with a RESTful API using Django REST F
 ## Access Django Admin:
 Open the Django admin at http://127.0.0.1:8000/admin/ and log in using the superuser credentials.
 
+## how to run a api endpoint:
+- first we need to make sure that we migrated the models to database
+- then we need to start the server using "python manage.py runserver" command.
+- then we need to open another cmd prompt and open virtual environment and open the project folder and provide curl or httpie commands.
+
 # Testing or Using the API endpoints.
 - we can test API endpoints using curl or httpie commands. 
 
