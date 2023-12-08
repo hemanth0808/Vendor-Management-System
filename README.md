@@ -41,12 +41,12 @@ Open the Django admin at http://127.0.0.1:8000/admin/ and log in using the super
 # Testing or Using the API endpoints.
 - we can test API endpoints using curl or httpie.
 ## Create a vendor:
-- using curl:
-curl -H "Authorization: Token your_obtained_token" -X POST http://127.0.0.1:8000/api/vendors/ -d "vendor_code=01&name=Vendor+1&contact_details=Contact+1&address=Address+1"
-- using httpit:
-http POST http://127.0.0.1:8000/api/vendors/ vendor_code=01 name="Vendor 1" contact_details="Contact 1" address="Address 1" "Authorization: Token your_obtained_token"
-- About this API endpoint:
-here this endpoint is used to create a vendor by providing the vendor details.
+### using curl:
+- curl -H "Authorization: Token your_obtained_token" -X POST http://127.0.0.1:8000/api/vendors/ -d "vendor_code=01&name=Vendor+1&contact_details=Contact+1&address=Address+1"
+### using httpit:
+- http POST http://127.0.0.1:8000/api/vendors/ vendor_code=01 name="Vendor 1" contact_details="Contact 1" address="Address 1" "Authorization: Token your_obtained_token"
+### About this API endpoint:
+- here this endpoint is used to create a vendor by providing the vendor details.
 
 
 
