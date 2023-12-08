@@ -139,7 +139,11 @@ Open the Django admin at http://127.0.0.1:8000/admin/ and log in using the super
 ### using httpie:
 - http http://127.0.0.1:8000/api/vendors/1/performance/ "Authorization: Token your_obtained_token"
 ### About this API endpoint:
-- here this endpoint is used to retrieve the performance metrics of a vendor with given vendor_id.
+- here this endpoint is used to retrieve the performance metrics of a vendor with given vendor_id. this performance metrics contains on_time Delivery rate, quality rating average, average response time, fulfilment rate
+- On time delivery rate is calculated each time a PO status changes to "completed". this is the average of no of po delivered before the delivery_date and no of total po's delivered.
+- quality rating average is calculated after every po completion and it is the average of all ratings given to that specific vendor.
+- average response time is calculated each time a po is acknowledged by the vendor. it is the time difference between issue_date and acknowledgment_date for each po, and then the average of these times for all po's of the vendor.
+- fulfillment rate is calculated when po status is set to "completed". this is the average of no of successfully fulfilled pos (status = "completed" without issues) by the total no of pos issued to the vendor.
 
 ## Update acknowledgment_data and trigger the recalculation of average_response_time:
 ### using curl:
