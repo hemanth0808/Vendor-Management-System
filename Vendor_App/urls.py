@@ -9,5 +9,4 @@ urlpatterns = [
     path('purchase_orders/<int:pk>/', PurchaseOrderRetrieveUpdateDeleteView.as_view(), name='purchase-order-retrieve-update-delete'),
     path('vendors/<int:pk>/performance/', VendorPerformanceView.as_view(), name='vendor-performance'),
     path('purchase_orders/<int:pk>/acknowledge/', AcknowledgePurchaseOrderView.as_view(), name='acknowledge-purchase-order'),
-
 ]

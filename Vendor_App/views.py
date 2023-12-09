@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from rest_framework import generics
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import *
 from .models import *
@@ -9,6 +8,7 @@ from django.utils import timezone
 from django.db.models import Avg
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics, status
 
 class VendorListCreateView(generics.ListCreateAPIView):
     # authentication_classes = [TokenAuthentication]
@@ -49,7 +49,7 @@ class VendorPerformanceView(generics.RetrieveAPIView):
                  'fulfillment_rate': serializer.data['fulfillment_rate']})
         # return Response(serializer.data['on_time_delivery_rate', 'quality_rating_avg', 'average_response_time', 'fulfillment_rate'])
 
-class AcknowledgePurchaseOrderView(generics.CreateAPIView):
+class AcknowledgePurchaseOrderView(generics.UpdateAPIView):
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAuthenticated]
     queryset = PurchaseOrder.objects.all()
@@ -60,7 +60,12 @@ class AcknowledgePurchaseOrderView(generics.CreateAPIView):
         instance.acknowledgment_date = request.data.get('acknowledgment_date')    #timezone.now()
         instance.save()
         response_times = PurchaseOrder.objects.filter(vendor=instance.vendor, acknowledgment_date__isnull=False).values_list('acknowledgment_date', 'issue_date')
-        average_response_time = sum((ack_date - issue_date).total_seconds() for ack_date, issue_date in response_times) / len(response_times)
+        average_response_time = sum(abs((ack_date - issue_date).total_seconds()) for ack_date, issue_date in response_times) #/ len(response_times)
+        if response_times:
+            average_response_time = total_seconds / len(response_times)
+        else:
+            average_response_time = 0  # Avoid division by zero if there are no response times
         instance.vendor.average_response_time = average_response_time
         instance.vendor.save()
         return Response({'acknowledgment_date': instance.acknowledgment_date})
+
